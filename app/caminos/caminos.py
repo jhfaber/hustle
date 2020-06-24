@@ -6,7 +6,7 @@ caminos= {
         "pasos":[
             {"img":"bluestacks.PNG","accion":"doble"}
         ]
-    },
+    }, 
     "jugar_arena":{
         "config": {
             "tiempo_ejecucion":120,
@@ -56,6 +56,16 @@ caminos= {
 
 
         ]
+    },
+    "dungeon": {
+        "config":{
+            "tiempo":10
+        },
+        "pasos":[
+
+        ]
+
+
     }
 
 

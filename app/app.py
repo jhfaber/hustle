@@ -1,7 +1,7 @@
 
 
 import imagesearch as ims
-from caminos import caminos
+from caminos.caminos import caminos
 import random
 import time
 import math,sys
@@ -20,9 +20,9 @@ def fun_error(e):
    return 'Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e
 
 class Acciones:
-    def __init__(self,camino=[]):
+    def __init__(self,camino=[],path="img/"):
         self.camino=camino
-        self.path = "img/"
+        self.path = path
         self.posiciones_arena = [(696, 180),(575, 314),(809, 314),(458, 442),(698, 456),(924, 439),(349, 577),(565, 578),(809, 580),(1048, 585)]
         self.ciclo=0
 
@@ -293,7 +293,22 @@ class Acciones:
 
 
     
-
+class Pruebas:
+    def fun_arrastrar_img_a_otra():
+        pos = im.imagesearch(path+"excel.PNG")
+        pos2= im.imagesearch(path+"carpeta.PNG")
+        
+        if(pos[0]!=-1 and pos2[0]!=-1):
+            pyautogui.moveTo(pos[0], pos[1], 2, pyautogui.easeInOutQuad)
+            pyautogui.mouseDown() #sostener
+            pyautogui.moveTo(pos2[0], pos2[1], 2, pyautogui.easeInOutQuad)
+            pyautogui.mouseUp()
+            
+            
+        print(pos)
+        print(pos2)
+    
+fun_arrastrar_img_a_otra()
 
 
 

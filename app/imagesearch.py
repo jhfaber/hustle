@@ -287,3 +287,57 @@ def imagesearch_from_folder(path, precision):
 
 def r(num, rand):
     return num + rand * random.random()
+
+
+
+def fun_arrastrar_img_a_otra(img_arr,offset=2):
+
+    """ recibe array de imagenes"""
+    pos = im.imagesearch(path+img_arr[0])
+    pos2= im.imagesearch(path+img_arr[1])
+    
+    
+
+    if(pos[0]!=-1 and pos2[0]!=-1):
+        img = cv2.imread(path+img_arr[0])
+        img2 = cv2.imread(path+img_arr[1])
+        height, width, channels = img.shape
+        height2, width2, channels2 = img2.shape
+        
+        pyautogui.moveTo( pos[0] +width/2, pos[1] + height/2,2, pyautogui.easeInOutQuad)
+        pyautogui.mouseDown() #sostener
+        pyautogui.moveTo(pos2[0] + r(width / 2, offset), pos2[1] + r(height / 2, offset),2, pyautogui.easeInOutQuad)
+        pyautogui.mouseUp()   
+        
+        
+def fun_roll(img="",pos=(689, 356),operation="righ",pixels=320):
+    """por defecto coge la mitad de pantalla para el desplamiento """
+    movementx=0
+    movementy=0
+    
+    if(operation=="righ"):
+        movementx =movementx - pixels
+    elif(operation=="left"):
+        movementx =movementx + pixels
+    elif(operation=="up"):
+        movementy = movementy + pixels
+    elif(operation=="down"):
+        movementy = movementy - pixels
+        
+    
+    if(img!=""):
+        pos = im.imagesearch(path+img)
+        if(pos[0]!=-1):
+
+            img = cv2.imread(path+img)
+            height, width, channels = img.shape
+
+            pyautogui.moveTo( pos[0] +width/2, pos[1] + height/2,2, pyautogui.easeInOutQuad)
+            pyautogui.mouseDown() #sostener
+            pyautogui.moveTo(pos[0] + width/2 + movementx, pos[1] + height/2  +movementy  ,2  , pyautogui.easeInOutQuad)
+            pyautogui.mouseUp() 
+    else:
+        pyautogui.moveTo( pos[0] , pos[1] ,2, pyautogui.easeInOutQuad)
+        pyautogui.mouseDown() #sostener
+        pyautogui.moveTo(pos[0] + movementx, pos[1]  +movementy  ,2  , pyautogui.easeInOutQuad)
+        pyautogui.mouseUp()
