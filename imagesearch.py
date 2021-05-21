@@ -8,7 +8,7 @@ import subprocess
 import os
 
 ##test
-
+#test2
 is_retina = False
 if platform.system() == "Darwin":
     is_retina = subprocess.call("system_profiler SPDisplaysDataType | grep 'retina'", shell=True)
